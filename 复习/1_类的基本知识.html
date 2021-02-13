@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_类的基本知识</title>
+</head>
+<body>
+    <script>
+        class Person {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+            speck() {
+                console.log(`我的名字是${this.name} 我的年龄是${this.age}`);
+            }
+        } 
+        class Student extends Person {
+            constructor(name, age, trade) {
+                super(name, age);
+                this.trade = trade;
+                this.school = "大雷子课堂";
+            }
+            // speak方法放在了哪里?—类的原型对象上，供实例使用
+            //通过Person实例调用speak时，speak中的this就是Person实例
+
+            speck() {
+                console.log(`我的名字是${this.name} 我的年龄是${this.age} 我的年级是${this.trade}`);
+            }
+        }
+        const s1 = new Student("大雷子", 18, "高一");
+        const p1 = new Person("二类字", 15);
+        // console.log(s1);
+        // console.log(p1);
+        // s1.speck()
+
+        class Car {
+            constructor(name, price) {
+                this.name = name;
+                this.price = price;
+            }
+            // 类中可以直接写赋值语句, 如下代码的含义是: 给Car的实例对象添加一个属性, 名为a 值为1
+            a = 1;
+        }
+        let c1 = new Car("奔驰c63", 199);
+        let c2 = new Car("宝马", 299);
+        console.log(c1);
+        console.log(c2);
+    </script>   
+</body>
+</html>

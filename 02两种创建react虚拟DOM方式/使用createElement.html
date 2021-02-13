@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="test"></div>
+    <!-- 引入react核心库 可以使用用React对象-->
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <!-- 引入react-dom 用于支持react操作dom 可以使用用ReactDOM对象-->
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <!-- 引入babel 用于将jsx转为js -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      const vDom = <h1 id="title">hello</h1>;
+      const vNode = React.createELement("h1", {id: "title"}, 
+        React.createELement("span", {id: "title"}, "hello")
+      );
+      ReactDOM.render(vNode, document.getElementById("test"));
+    </script>
+  </body>
+</html>

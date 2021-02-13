@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="test"></div>
+    <!-- 引入react核心库 可以使用用React对象-->
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <!-- 引入react-dom 用于支持react操作dom 可以使用用ReactDOM对象-->
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <!-- 引入babel 用于将jsx转为js -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        class Weather extends React.Component{
+          // 构造器调用几次? ---一次
+          constructor(props) {
+            super(props);
+            // 初始化状态
+            this.state = {
+              isHot: false
+            }
+            this.click = this.click.bind(this);
+          }
+
+          // render调用几次 1 + n 次 --- 初始化一次
+          render() {
+            const { isHot } = this.state;
+            return (
+              <h1 onClick={this.changeWeather}>今天天气很{isHot ? '炎热' : '凉爽'}</h1>
+            )
+          }
+          
+          // changeWeather点击几次调用几次
+          changeWeather() {
+            // 类中的方法默认开启了严格模式 所以changeWeather中的this执行的是undefined
+            console.log(this);
+            // 严重注意: 状态通过setState进行更新,且更新是一种是合并, 不是替换
+            this.setState({
+              isHot: !this.state.isHot
+            })
+
+            // 严重注意: 状态(state)不可以直接更改,下面这行就是直接更改!!!!
+            // this.state.isHot = !this.state.isHot;
+          }
+        }
+        ReactDOM.render(<Weather/>, document.getElementById("test"));
+    </script>
+  </body>
+</html>
