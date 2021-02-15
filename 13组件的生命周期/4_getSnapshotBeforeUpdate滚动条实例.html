@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .newsList {
+        background-color: orange;
+        overflow: auto;
+        height: 150px;
+      }
+      .news {
+          color: white;
+          font-size: 20px;
+          height: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="test"></div>
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      class News extends React.Component {
+        state = { newsArr: [] };
+        componentDidMount() {
+          let { newsArr } = this.state;
+          setInterval(() => {
+            const news = `新闻${this.state.newsArr.length + 1}`;
+            this.setState({
+              newsArr: [news, ...this.state.newsArr],
+            });
+          }, 1000);
+        }
+        // 在更新完成之前触发 return快照值或者是null 将传递给componentDidUpdate(preProps, preState, snapshot)
+        getSnapshotBeforeUpdate() {
+            return this.refs.list.scrollHeight;
+        }
+        // componentDidUpdate通过第三个参数接收getSnapshotBeforeUpdate()
+        componentDidUpdate(preProps, preState, height) {
+            console.log(height);
+            this.refs.list.scrollTop += this.refs.list.scrollHeight - height;
+        }
+        render() {
+          return (
+            <ul className="newsList" ref="list">
+              {this.state.newsArr.map((n, index) => {
+                return <li className="news" key={index}>{n}</li>;
+              })}
+            </ul>
+          );
+        }
+      }
+      ReactDOM.render(<News></News>, document.getElementById("test"))
+    </script>
+  </body>
+</html>
