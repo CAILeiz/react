@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="test"></div>
+    <!-- 
+        分析: 慢动作回放使用key作为唯一标识的虚拟DOM转换为真实的DOM
+        1. 使用index作为key
+        初始数据:
+            {id:1, name: "小张", age: 18},
+            {id:2, name: "小李", age: 19}
+        初始的虚拟DOM
+        <li key={0}>{小张} ------- {18} <input type="text" /></li>
+        <li key={1}>{小李} ------- {19} <input type="text" /></li>
+
+        添加完小王之后的数据: 
+            {id:3, name: "小王", age: 20},
+            {id:1, name: "小张", age: 18},
+            {id:2, name: "小李", age: 19}
+        更新数据后的虚拟DOM: 
+        <li key={0}>{小王} ------- {20} <input type="text" /></li>
+        <li key={1}>{小张} ------- {18} <input type="text" /></li>
+        <li key={2}>{小李} ------- {19} <input type="text" /></li>
+
+        产生的问题: 页面上的input框中的值串位,并且效率降低
+        
+        -------------------------------------------------------------------------------------------
+        -------------------------------------------------------------------------------------------
+
+        2. 使用id作为key
+        初始数据:
+            {id:1, name: "小张", age: 18},
+            {id:2, name: "小李", age: 19}
+        初始的虚拟DOM
+        <li key={1}>{小张} ------- {18} <input type="text" /></li>
+        <li key={2}>{小李} ------- {19} <input type="text" /></li>
+
+        添加完小王之后的数据: 
+            {id:3, name: "小王", age: 20},
+            {id:1, name: "小张", age: 18},
+            {id:2, name: "小李", age: 19}
+        更新数据后的虚拟DOM: 
+        <li key={3}>{小王} ------- {20} <input type="text" /></li>
+        <li key={1}>{小张} ------- {18} <input type="text" /></li>
+        <li key={2}>{小李} ------- {19} <input type="text" /></li>
+     -->
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      class Person extends React.Component {
+        state = {
+            persons: [
+                {id:1, name: "小张", age: 18},
+                {id:2, name: "小李", age: 19}
+            ]
+        };
+        add = () => {
+            let { persons } = this.state;
+            let p = {id: 3, name: "小王", age: 20};
+            this.setState({
+                persons: [p, ...this.state.persons]
+            })
+        }
+        // 组件进行渲染
+        render() {
+          console.log("TIme---render");
+          return (
+            <div>
+                <h2>展示人员信息</h2>
+                <button onClick={this.add}>添加一个小王</button>
+                {
+                    this.state.persons.map((person, index) => {
+                        return <li key={person.id}>{person.name} ------- {person.age} <input type="text" /></li>
+                    })
+                }
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(
+        <Person></Person>,
+        document.getElementById("test")
+      );
+    </script>
+  </body>
+</html>
