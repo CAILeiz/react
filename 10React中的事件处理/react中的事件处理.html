@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>createRef</title>
+  </head>
+  <body>
+    <div id="test"></div>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        class Demo extends React.Component {
+            // (1).通过onXxx属性指定事件处理函数(注意大小写)
+            // a.React使用的是自定义(合成)事件，而不是使用的原生DOM事件 ——————— 为了更好的兼容性
+            // b.React中的事件是通过事件委托方式处理的(委托给组件最外层的元素) ——————— 为了的高效
+            // (2).通过event.target得到发生事件的DOM元素对象 ——————— 不要过度使用ref 
+
+            // React.createRef调用之后会返回一个容器,该容器可以存储被ref所标识的节点, 该节点是"专人专用"的
+            myRef = React.createRef();
+            myRef2 = React.createRef();
+            // 使用箭头函数 调正this指向
+            showData = () => {
+                alert(this.myRef.current.value);
+            }
+            showData2 = e => {
+                alert(e.target.value);
+            }
+            render() {
+                return (
+                    <div>
+                        <input type="text" ref={this.myRef} placeholder="点击按钮提示数据" /> &nbsp;
+                        <button onClick={this.showData}>点我提示左侧的数据</button> &nbsp;
+                        <input type="text" ref={this.myRef2}  placeholder="失去焦点提示数据" onBlur={this.showData2} />
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<Demo />, document.getElementById("test"))
+        
+    </script>
+  </body>
+</html>

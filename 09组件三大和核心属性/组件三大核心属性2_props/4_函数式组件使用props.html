@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="test"></div>
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- 全局多一个PropTypes -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.0/prop-types.js"></script>
+
+    <script type="text/babel">
+      // class Person extends React.Component {
+      //   constructor(props) {
+      //     // 构造器中是否接收props, 是否传递props, 取决于: 是否希望在构造器中通过this访问props
+      //     super(props);
+      //     console.log("单输出props", props);
+      //     console.log("constructor", this.props);
+      //   }
+      //   // 对标签属性进行类型,必要性的限制
+      //   static propTypes = {
+      //     name: PropTypes.string.isRequired, // 限制name必传且为字符串
+      //     sex: PropTypes.string, // 限制sex为字符串
+      //     age: PropTypes.number, // 限制age为number类型的
+      //     speck: PropTypes.func, // 限制speck为函数
+      //   };
+      //   // 指定默认标签属性值
+      //   static defaultProps = {
+      //     sex: "男", // sex默认值为男
+      //     age: 18, // age默认值为18
+      //   };
+      //   render() {
+      //     console.log(this);
+      //     const { name, sex, age } = this.props;
+      //     return (
+      //       <ul>
+      //         <li>姓名: {name}</li>
+      //         <li>性别: {sex}</li>
+      //         <li>年龄: {age + 1}</li>
+      //       </ul>
+      //     );
+      //   }
+      // }
+
+      function Person(props) {
+        console.log("props", props);
+        const { name, sex, age } = props;
+        return (
+          <ul>
+            <li>姓名: {name}</li>
+            <li>性别: {sex}</li>
+            <li>年龄: {age + 1}</li>
+          </ul>
+        );
+      }
+      // 对标签属性进行类型,必要性的限制
+      Person.propTypes = {
+          name: PropTypes.string.isRequired, // 限制name必传且为字符串
+          sex: PropTypes.string, // 限制sex为字符串
+          age: PropTypes.number, // 限制age为number类型的
+          speck: PropTypes.func, // 限制speck为函数
+        };
+        // 指定默认标签属性值
+        Person.defaultProps = {
+          sex: "男", // sex默认值为男
+          age: 18, // age默认值为18
+        };
+
+      // 渲染组件到页面中
+      ReactDOM.render(<Person name="tom" />, document.getElementById("test"));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 展开运算符的用法
+        // 1. 展开一个数组
+        let arr1 = [1, 3, 5, 7, 9];
+        let arr2 = [2, 4, 6, 8, 10];
+        console.log(...arr1);
+        // 2. 连接数组
+        let arr3 = [...arr1, ...arr2];
+        console.log(arr3);
+        // 3. 在函数中使用 用来接收不定实参
+        function sum(...numbers) {
+            console.log("numbers", numbers);
+            return numbers.reduce((preValue, currentValue) => {
+                return preValue + currentValue;
+            })
+        }
+        console.log(sum(1, 2, 3));
+
+        // 4. 构造对象时使用展开语法
+        let person = {name: "tom"};
+        let person2 = {...person};
+        console.log("person2", person2);
+        console.log("...person", ...person); // 对象展开符号不能展开对象
+
+        // 合并对象
+        let person3 = {...person, name: "jack", address: "地球"};
+        console.log("person3", person3);
+    </script>
+</body>
+</html>

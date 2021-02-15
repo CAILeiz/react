@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="test"></div>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        class Demo extends React.Component {
+            state = {
+                isHot: true
+            }
+            // 使用箭头函数 调正this指向
+            showData = () => {
+                console.log(this);
+                const { input1 } = this;
+                alert(input1.value); 
+            }
+            changeWeather = () => {
+                this.setState({
+                    isHot: !this.state.isHot
+                })
+            }
+            saveInput = c => {
+                this.input1 = c;
+                console.log("@");
+            }
+            render() {
+                const { isHot } = this.state;
+                return (
+                    <div>
+                        <h1>今天天气很{isHot ? '炎热' : '凉爽'}</h1>
+                        {/*<input type="text" ref={currentNode => { this.input1 = currentNode; console.log("@", currentNode)}} placeholder="点击按钮提示数据" />  <br/>*/}
+                        <input type="text" ref={this.saveInput} placeholder="点击按钮提示数据" />  <br/>
+                        <button onClick={this.showData}>点我提示左侧的数据</button>
+                        <button onClick={this.changeWeather}>点我切换天气</button> 
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<Demo />, document.getElementById("test"))
+    </script>
+  </body>
+</html>

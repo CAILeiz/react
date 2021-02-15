@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="test"></div>
+    <div id="text"></div>
+    <div id="el"></div>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        class Person extends React.Component {
+            render() {
+              console.log(this);
+                const {name, sex, age} = this.props;
+                return (
+                    <ul>
+                        <li>姓名: {name}</li>
+                        <li>性别: {sex}</li>
+                        <li>年龄: {age + 1}</li>
+                    </ul>
+                )
+            }
+        }
+        const p = {name: "jerry", age: 19, sex: "male"}
+        // 当我们传递参数很多 会很繁琐, 此时我们推荐使用批量传递props(标签属性)
+        ReactDOM.render(<Person {...p}/>, document.getElementById("test"));
+        ReactDOM.render(<Person name="tom" age="19" sex="男" />, document.getElementById("el"));
+        // 如果传递属性时要传递number类型的得使用{}进行传递, 用""传递的是字符串类型的
+        ReactDOM.render(<Person name="tom" age={18} sex="男" />, document.getElementById("text"));
+    </script>
+  </body>
+</html>
+
