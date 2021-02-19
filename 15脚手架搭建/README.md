@@ -8,7 +8,7 @@
 4. 使用脚手架开发的项目的特点:模块化,组件化,工程化
 
 ## 2.创建项目并使用
-第一步: 全局安装 npm install -g create-react-app
+第一步: 全局安装 npm install -g create-react-app 
 第二步: 切换到想创建项目的目录 create-react-app hello-react
 第三步: cd hello-react
 第四步: 启动项目 npm start
