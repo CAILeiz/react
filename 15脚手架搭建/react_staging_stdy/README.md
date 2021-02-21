@@ -107,7 +107,7 @@ try {
         <Link to="/xxxXx" >Demo</Link>
     3. 展示区写Route标签进行路径的匹配
         <Route path= '/ xxxx' component={Demo}/>
-    4. <App>的最外侧包裹了一个<BrowserRouter>或<HashRouter>
+    4. <App>的最外侧包裹了一个<BrowserRouter>或<HashRouter> 
 
 ## 二 路由组件和一般组件************************
     1. 写法不同
@@ -223,8 +223,65 @@ push是在路由栈中压栈
     HashRouter使用的是URL的哈希值。
 2. url表现形式不一样
     BrowserRouter的路径中没有#,例如: localhost : 3000/demo/test
-    HashRouter的路径包含# ,例如: loca lhost : 3000/#/ demo/test
+    HashRouter的路径包含# ,例如: localhost : 3000/#/ demo/test
 3. 刷新后对路由state参数的影响
     (1) . BrowserRouter没有任何影响，因为state保 存在history对象中。
-    (2). [HashRouter刷新后会导致路由state参数的丢失。]
+    (2). HashRouter刷新后会导致路由state参数的丢失。
 4. 备注: HashRouter 可以用于解决一些路径错 误相关的问题。
+
+
+
+## 十五 流行的开源React UI组件库
+1. material-ui(国外)
+    1. 官网: http://www.material-ui.com/#/
+    2. github: https://github.com/callemall/material-ui
+2. ant-design(国内蚂蚁金服)
+    1. 官网: https://ant.design/index-cn
+    2. Github: https://github.com/ant-design/ant-design/
+3. ElementUi vue react
+4. vant(有赞) 移动端
+
+
+## 十六 antd样式的按需引入 + 自定义主题
+1. 安装依赖: yarn add react-app-rewired customize-cra babel-plugin-import less less-loader
+2. 修改package. json
+    "scripts": {
+        "start": "react-app-rewired start",
+        "build": "react-app-rewired build" ,
+        "test": "react-app-rewired test" ,
+        "eject": "react-scripts eject"
+    }
+3. 根日求下创config-overrides.js
+//配置具体的修改规则
+    const { override, fixBabelImports, addLessLoader} = require( ' customize-cra');
+    module. exports = override(
+        fixBabelImports( 'import', {
+            libraryName: 'antd',
+            libraryDirectory: 'es',
+            style: true,
+        }),
+        addLessLoader({
+            lessOptions:{
+                javascriptEnabled: true ,
+                modifyVars: { ' @primary-color': 'green' },
+            }
+        }),
+    );
+4. 备注:不用在组件里亲自引入样式了，即: import 'antd/dist/antd.css'应该删掉
+
+
+## 十七 Redux的理解
+1. 学习文档
+    1. 英文文档: https://redux.js.org/
+    2. 中文文档: http://www.redux.org.cn/
+    3. Github: https://github.com/reactjs/redux
+2. redux是什么
+    1. redux是一个专门用于做状态管理的JS库(不是react插件库)。
+    2. 它可以用在 react, angular, vue等项目中,但基本与react 配合使用。
+    3. 作用:集中式管理react应用中多个组件共享的状态。
+3. 什么情况下需要使用redux
+    1. 某个组件的状态，需要让其他组件可以随时拿到(共享)。
+    2. 一个组件需要改变另一个组件的状态(通信)。
+    3. 总体原则: 能不用就不用，如果不用比较吃力才考虑使用。
+4. 
+
