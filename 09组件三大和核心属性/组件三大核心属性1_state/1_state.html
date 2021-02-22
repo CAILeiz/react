@@ -29,8 +29,8 @@
             this.state = {
               isHot: false
             }
-            console.log(this);
-            // this.changeWeather = this.changeWeather.bind(this);
+            console.log("constructor", this);
+            this.changeWeather = this.changeWeather.bind(this);
             // console.log(this);
           }
 
@@ -50,7 +50,6 @@
             this.setState({
               isHot: !this.state.isHot
             })
-
             // 严重注意: 状态(state)不可以直接更改,下面这行就是直接更改!!!!
             // this.state.isHot = !this.state.isHot;
           }

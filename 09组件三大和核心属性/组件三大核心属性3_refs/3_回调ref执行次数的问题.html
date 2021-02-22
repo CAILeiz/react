@@ -29,15 +29,14 @@
                 })
             }
             saveInput = c => {
+                console.log("我是类绑定的ref",c);
                 this.input1 = c;
-                console.log("@");
             }
             render() {
                 const { isHot } = this.state;
                 return (
                     <div>
                         <h1>今天天气很{isHot ? '炎热' : '凉爽'}</h1>
-                        {/*<input type="text" ref={currentNode => { this.input1 = currentNode; console.log("@", currentNode)}} placeholder="点击按钮提示数据" />  <br/>*/}
                         <input type="text" ref={this.saveInput} placeholder="点击按钮提示数据" />  <br/>
                         <button onClick={this.showData}>点我提示左侧的数据</button>
                         <button onClick={this.changeWeather}>点我切换天气</button> 
@@ -49,3 +48,4 @@
     </script>
   </body>
 </html>
+<!-- <input type="text" ref={currentNode => { this.input1 = currentNode; console.log("@", currentNode)}} placeholder="点击按钮提示数据" />  <br/> -->

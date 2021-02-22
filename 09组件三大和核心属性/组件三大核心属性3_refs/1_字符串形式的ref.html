@@ -17,8 +17,8 @@
             // 使用箭头函数 调正this指向
             showData = () => {
                 console.log(this);
-                const { input1 } = this.refs;
-                // alert(input1.value); 
+                const { input1: {value} } = this.refs;
+                alert(value); 
             }
             showData2 = () => {
                 const { input2 } = this.refs;

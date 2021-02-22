@@ -21,11 +21,11 @@
     <!-- 引入babel 用于将jsx转为js -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
-      const VNode = <h1>hello</h1>;
-      console.log("虚拟DOM", VNode);
+      const VDOM = <h1>hello</h1>;
+      console.log("虚拟DOM", VDOM);
       console.log("真实DOM", document.getElementById("test"));
       let realDom = document.getElementById("test");
-      ReactDOM.render(VNode, realDom);
+      ReactDOM.render(VDOM, realDom);
     </script>
   </body>
 </html>

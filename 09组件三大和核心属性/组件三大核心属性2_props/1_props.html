@@ -8,8 +8,8 @@
   </head>
   <body>
     <div id="test"></div>
-    <div id="text"></div>
     <div id="el"></div>
+    <div id="text"></div>
     <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -17,7 +17,7 @@
     <script type="text/babel">
         class Person extends React.Component {
             render() {
-              console.log(this);
+                console.log(this);
                 const {name, sex, age} = this.props;
                 return (
                     <ul>
@@ -33,7 +33,7 @@
         ReactDOM.render(<Person {...p}/>, document.getElementById("test"));
         ReactDOM.render(<Person name="tom" age="19" sex="男" />, document.getElementById("el"));
         // 如果传递属性时要传递number类型的得使用{}进行传递, 用""传递的是字符串类型的
-        ReactDOM.render(<Person name="tom" age={18} sex="男" />, document.getElementById("text"));
+        ReactDOM.render(<Person name="tom" age={18} sex="male" />, document.getElementById("text"));
     </script>
   </body>
 </html>

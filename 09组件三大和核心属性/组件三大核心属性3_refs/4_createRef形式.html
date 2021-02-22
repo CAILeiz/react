@@ -19,7 +19,8 @@
             myRef2 = React.createRef();
             // 使用箭头函数 调正this指向
             showData = () => {
-                alert(this.myRef.current.value);
+                console.log(this);
+                // alert(this.myRef.current.value);
             }
             showData2 = () => {
                 alert(this.myRef2.current.value);

@@ -9,7 +9,7 @@
     (5). function test() {}
 2. [语句(代码)]:
 下面这些都是语句(代码):
-    (1).if()0
-    (2).for()i]}
-    (3).switch(){case:xxxx
+    (1).if(){}
+    (2).for(){}
+    (3).switch(){case:xxxx}
 

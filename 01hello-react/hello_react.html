@@ -21,8 +21,13 @@
     <!-- 引入babel 用于将jsx转为js -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
-      const vDom = <h1>hello</h1>;
-      ReactDOM.render(vDom, document.getElementById("test"));
+      const VDOM = <h1>hello</h1>;
+      function test() {
+        console.log(this)
+        console.log(1);
+      }
+      test();
+      ReactDOM.render(VDOM, document.getElementById("test"));
     </script>
   </body>
 </html>

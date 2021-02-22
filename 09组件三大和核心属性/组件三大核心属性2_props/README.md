@@ -27,4 +27,3 @@ Person.defaultProps = {
     age: 18 // age默认值为18
 }
 
-3. 

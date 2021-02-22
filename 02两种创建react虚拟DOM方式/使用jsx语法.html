@@ -21,14 +21,16 @@
     <!-- 引入babel 用于将jsx转为js -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
-      const vNode = (
+      const VDOM = (
         <h1 id="title">
           <span>hello</span>  
         </h1>
       ); 
-      console.log(vNode); 
+      // JSX语法会转换为createElement
+      // "use strict";
+      // const VDOM = React.createElement("h1", {id: "title"}, React.createElement("span", null, "hello"));
       // JSX不写引号 如果写了之后会编译成字符串
-      ReactDOM.render(vNode, document.getElementById("test"));
+      ReactDOM.render(VDOM, document.getElementById("test"));
     </script>
   </body>
 </html>

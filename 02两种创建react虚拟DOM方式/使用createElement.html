@@ -21,11 +21,10 @@
     <!-- 引入babel 用于将jsx转为js -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
-      const vDom = <h1 id="title">hello</h1>;
-      const vNode = React.createELement("h1", {id: "title"}, 
-        React.createELement("span", {id: "title"}, "hello")
+      const VDOM = React.createElement("h1", {id: "wrap"}, 
+        React.createElement("span", {id: "title"}, "hello")
       );
-      ReactDOM.render(vNode, document.getElementById("test"));
+      ReactDOM.render(VDOM, document.getElementById("test"));
     </script>
   </body>
 </html>

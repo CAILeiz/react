@@ -6,6 +6,6 @@
 3. 引入 babel 用于将 jsx 转为 js
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
-    const vDom = <h1>hello</h1>;
-    ReactDOM.render(vDom, document.getElementById("test"));
+    const VDOM = <h1>hello</h1>;
+    ReactDOM.render(VDOM, document.getElementById("test"));
 </script>

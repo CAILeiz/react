@@ -2,13 +2,6 @@ import React, { Component } from 'react'
 
 export default class Count extends Component {
     state = {carName: "奔驰c63"}
-    // componentDidMount() {
-    //     // store.subscribe(fn) 监测redux中状态的变化,只要状态发生变化,就调用render
-    //     store.subscribe(() => {
-    //         // this.setState会触发重新render
-    //         this.setState({});
-    //     });
-    // }
     // 加法
     increment = () => {
         const { value } = this.selectNumber;

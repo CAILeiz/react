@@ -13,7 +13,7 @@ showData = () => {
 
 ## 2.回调函数形式的ref 开发一般都使用内联的ref回调函数
 用法:
-在节点上添加一个ref的标签属性,ref的内容是{}包起来的函数使用箭头函数
+在节点上添加一个ref的标签属性,ref的内容是{}包起来的函数使用箭头函数 currentNode指的是当前DOM元素
 ```javascript
 <input type="text" ref={currentNode => this.input1 = currentNode} placeholder="点击按钮提示数据" />
 showData = () => {
@@ -36,6 +36,8 @@ render会在第一次刷新的时候调用一次
 首先创建一个person实例属性 
 class XXX extends React.Component {
     myRef = React.createRef();  // myRef对象中有一个current存储着当前DOM
+    // myRef对象如下:
+    //     current: input
     showData = () => {
         alert(this.myRef.current.value);
     }
