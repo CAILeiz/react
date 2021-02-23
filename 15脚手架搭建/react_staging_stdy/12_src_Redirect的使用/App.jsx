@@ -3,7 +3,6 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import About from "./pages/About"; // About是路由组件
 import Home from "./pages/Home"; // Home是路由组件
 import Test from "./pages/Test"; // Test是路由组件
-import Index from "./pages/Index" // INdex是路由组件
 import Header from "./components/Header"; //Header是一般组件
 import MyNavLink from "./components/MyNavLink"; // MyNavLink是一般组件
 

@@ -94,4 +94,7 @@ const store = createStore(allReducer ,composewithDevTools(applyNiddleware(thunk)
 (1).所有变量名字要规范，尽量触发对象的简写形式。
 (2).reducers文件夹中，编写index.js专门用于汇总并暴露所有的reducer
 
-
+## 打包react项目
+使用npm run build 打包一个build文件
+npm i serve -g
+serve ./build 直接就可以打开一个服务器
