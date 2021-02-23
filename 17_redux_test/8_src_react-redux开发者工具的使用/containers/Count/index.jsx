@@ -2,9 +2,9 @@
 // 引入用于connect用于连接UI组件与redux
 import {connect} from "react-redux"
 import {
-    increment, 
-    decrement,
-    incrementAsync
+    createIncrementAction, 
+    createDecrementAction,
+    createIncrementAsyncAction
 } from "../../redux/actions/count"
 import React, { Component } from 'react'
 class Count extends Component {
@@ -19,32 +19,32 @@ class Count extends Component {
     // 加法
     increment = () => {
         const { value } = this.selectNumber;
-        this.props.increment(value * 1);
+        this.props.jia(value * 1);
     }
     // 减法
     decrement = () => {
         const { value } = this.selectNumber;
-        this.props.decrement(value * 1);
+        this.props.jian(value * 1);
     }
     // 奇数再加
     incrementIfOdd = () => {
         const { value } = this.selectNumber;
         const {count} = this.props;
         if(count % 2 !== 0) {
-            this.props.increment(value * 1);
+            this.props.jia(value * 1);
         }
     }
     // 异步加
     incrementAsync = () => {
         const { value } = this.selectNumber;
-        this.props.incrementAsync(value * 1, 500);
+        this.props.jiaAsync(value * 1, 500);
     }
     render() {
         console.log("CountUI组件", this.props);
         return (
             <div>
                 {/* {store.getState() 获取store中的状态 */}
-                <h1>当前求和为{this.props.count}, 下方组件总人数为{this.props.personCount}</h1>
+                <h1>当前求和为{this.props.count}, 下方组件总人数为{this.props.rens}</h1>
                 <select ref={c => this.selectNumber = c}>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -78,7 +78,7 @@ class Count extends Component {
 // 使用connect()()创建并暴露一个Count容器组件
 export default connect(
     // 这个state是当时合并的reducers注册的对象
-    state => ({count: state.count, personCount: state.persons.length}),
+    state => ({count: state.he, rens: state.rens.length}),
     //mapDispatchToProps的一般写法 
     // dispatch => ({
     //     jia: (data) => {
@@ -93,8 +93,8 @@ export default connect(
     // }),
     //mapDispatchToProps的简写 reac-redux会
     {
-        increment,
-        decrement,
-        incrementAsync
+        jia: createIncrementAction,
+        jian: createDecrementAction,
+        jiaAsync: createIncrementAsyncAction
     }
 )(Count);

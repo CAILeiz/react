@@ -66,4 +66,32 @@ connect(mapStateToProps,mapDispatchToProps)(UT组件)
     )(UI组件)
     (3).在UI组件中通过this.props.xxxxxxx读取和操作状态
 
+## 6. 纯函数和高阶函数
+1. 纯函数
+    1.一类特别的函数:只要是同样的输入(实参)，必定得到同样的输出(返回)
+    2．必须遵守以下一些约束
+        1)不得改写参数数据
+        2)不会产生任何副作用，例如网络请求，输入和输出设备3)不能调用Date.now()或者Math.random()等不纯的方法
+    3. [redux的reducer函数必须是一个纯函数]
+2. 高阶函数
+    1．理解:一类特别的函数
+        1)情况1:参数是函数
+        2)情况2:返回是函数
+    2.常见的高阶函数:
+        1)定时器设置函数
+        2)数组的 forEach()/map()/filter()/reduce(/find(/bind()
+        3) promise
+        4)react-redux中的connect函数3.作用:能实现更加动态,更加可扩展的功能
+
+
+## 7.求和案例_react-redux开发者工具的使用
+(1).yarn add redux-devtools-extension
+(2).store中进行配置
+import {composewithDevTools} from 'redux-devtools-extension'
+const store = createStore(allReducer ,composewithDevTools(applyNiddleware(thunk))
+
+## 8.求和案例_react-redux最终版
+(1).所有变量名字要规范，尽量触发对象的简写形式。
+(2).reducers文件夹中，编写index.js专门用于汇总并暴露所有的reducer
+
 
