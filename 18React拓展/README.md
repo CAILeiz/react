@@ -35,7 +35,7 @@ setState更新状态的2种写法
     (3).Ref Hook: React.useRef()
 3. State Hook
     (1).State Hook让函数组件也可以有state状态，并进行状态数据的读写操作
-    (2).语法: const [xxx， setXxx] = React. useState(initValue)
+    (2).语法: const [xxx， setXxx] = React.useState(initValue)
     (3).useState()说明:
         参数:第一次初始化指定的值在内部作缓存
         返回值:包含2个元素的数组，第1个为内部当前状态值，第2个为更新状态值的函数
@@ -47,7 +47,7 @@ setState更新状态的2种写法
 ## 4. Effect Hook
 (1). Effect Hook可以让你在函数组件中执行副作用操作(用于模拟类组件中的生命周期钩子)
 (2). React中的副作用操作:
-    发aj ax请求数据获取
+    发ajax请求数据获取
     设置订阅/启动定时器:
     手动更改真实DOM
 (3).语法和说明:
@@ -58,7 +58,7 @@ setState更新状态的2种写法
             //在组件卸载前执行
             //在此做一些收尾工作，比如清除定时器/取消订阅等
         }
-    }，[stateValue]) //如果指定的是[]，回调还数只会在第一 次render ()后执行
+    }，[stateValue]) //如果指定的是[]，回调还数只会在第一次render()后执行
 ```
 (4).可以把useEffect Hook 看做如下三个函数的组合
     componentDidMount()

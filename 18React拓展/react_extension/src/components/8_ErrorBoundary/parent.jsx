@@ -9,7 +9,9 @@ export default class parent extends Component {
         console.log("@@", error);
         return {hasError: error}
     }
-    componentDidCatch() {
+    // componentDidCatch所有的错误都会
+    componentDidCatch(error) {
+        console.log("componentDidCatch Error", error);
         console.log("此处统计错误,反馈给服务器,用于通知编码人员进行bug的解决");
     }
     render() {
