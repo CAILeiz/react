@@ -18,6 +18,7 @@
 
 2. 类式组件
 // 创建函数式组件
+<script type="text/babel">
 class MyComponent extends React.Component{
         render() {
         // render是放在哪里的? = 类[MyComponent]的原型对象上,供实例使用
@@ -30,6 +31,7 @@ class MyComponent extends React.Component{
     }
 }
 ReactDOM.render(<MyComponent />, document.getElementById("test"));
+</script>
 <!-- 
 执行了ReactDOM.render(<MyComponent/>.......之后，发生了什么?
 1.React解析组件标签,找到了MyComponent组件。
